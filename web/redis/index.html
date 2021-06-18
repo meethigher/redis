@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/gh/meethigher/cdn@9.0/js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            //发送ajax请求，加载所有省份数据
+            $.get("findProvince",{},function (data){
+                //1.获取select
+                let province=$("#province");
+                //2.遍历数组
+                $(data).each(function (){
+                    //3.创建option标签
+                    let option="<option name='"+this.id+"'>"+this.name+"</option>";
+                    //4.调用select的append方法追加option
+                    province.append(option);
+                });
+
+
+            });
+        });
+    </script>
+</head>
+<body>
+<select name="" id="province">
+    <option value="">请选择省份</option>
+</select>
+</body>
+</html>
